@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Портфолио | Инженерные проекты</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #0b1a33;
+            padding: 2rem 1rem;
+            display: flex;
+            justify-content: center;
+        }
+        .container { max-width: 1200px; width: 100%; }
+        header { text-align: center; margin-bottom: 3rem; }
+        .avatar {
+            width: 120px; height: 120px; border-radius: 50%;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.2rem;
+            font-size: 3rem; font-weight: 700; color: #fff;
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
+        }
+        h1 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.02em; }
+        .subhead { font-size: 1.15rem; color: #475569; margin-top: 0.3rem; }
+        .social-links {
+            margin-top: 1.2rem;
+            display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
+        }
+        .social-links a {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            background: #e9edf3; padding: 0.5rem 1rem; border-radius: 40px;
+            text-decoration: none; color: #0b1a33; font-size: 0.95rem; font-weight: 500;
+            transition: 0.2s;
+        }
+        .social-links a:hover { background: #d0d9e6; transform: translateY(-2px); }
+        .social-links i { color: #2563eb; }
+
+        .section-title {
+            font-size: 1.8rem; font-weight: 600;
+            margin: 2.5rem 0 1.5rem;
+            display: flex; align-items: center; gap: 0.6rem;
+        }
+        .section-title i { color: #2563eb; font-size: 1.6rem; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .card {
+            background: #ffffff; border-radius: 20px; padding: 1.5rem 1.2rem 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            transition: 0.25s ease;
+            border: 1px solid #eef2f6;
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px -8px rgba(0,0,0,0.10);
+            border-color: #bdd3ff;
+        }
+        .card-icon { font-size: 2.8rem; margin-bottom: 0.5rem; }
+        .card h3 { font-weight: 600; font-size: 1.2rem; margin-bottom: 0.2rem; }
+        .card .desc { font-size: 0.95rem; color: #475569; margin: 0.3rem 0 0.6rem; flex: 1; }
+        .card .meta {
+            font-size: 0.8rem; color: #64748b;
+            display: flex; align-items: center; gap: 0.3rem;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .card .meta i { color: #94a3b8; width: 16px; }
+        .badge {
+            background: #eef2ff; color: #2563eb;
+            padding: 0.2rem 0.6rem; border-radius: 20px;
+            font-size: 0.7rem; font-weight: 600;
+        }
+        .card-actions {
+            display: flex; gap: 0.6rem; margin-top: 0.4rem; flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.5rem 1rem; border-radius: 40px;
+            font-size: 0.85rem; font-weight: 600;
+            text-decoration: none; background: #f1f5f9; color: #0b1a33;
+            border: none; cursor: pointer; transition: 0.2s;
+        }
+        .btn-primary { background: #2563eb; color: #fff; }
+        .btn-primary:hover { background: #1d4ed8; }
+        .btn-outline { background: transparent; border: 1px solid #cbd5e1; }
+        .btn-outline:hover { background: #e9edf3; border-color: #94a3b8; }
+
+        /* Специальная карточка для инженерного проекта */
+        .card-engineering {
+            border-left: 4px solid #2563eb;
+            background: #fafcff;
+        }
+        .card-engineering .card-icon { color: #2563eb; }
+
+        .project-detail {
+            font-size: 0.85rem;
+            color: #334155;
+            margin: 0.4rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .project-detail i { color: #2563eb; width: 18px; }
+
+        footer {
+            margin-top: 4rem; text-align: center; color: #94a3b8;
+            font-size: 0.9rem; border-top: 1px solid #e2e8f0; padding-top: 2rem;
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.8rem; }
+            .avatar { width: 90px; height: 90px; font-size: 2.2rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ШАПКА -->
+    <header>
+        <div class="avatar">👤</div>
+        <h1>Иван Петров</h1>
+        <p class="subhead">Инженер-проектировщик · Специалист по системам ХВС и холодоснабжения</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+            <a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            <a href="mailto:ivan@example.com"><i class="fas fa-envelope"></i> Написать</a>
+        </div>
+    </header>
+
+    <!-- ГАЛЕРЕЯ -->
+    <div class="section-title">
+        <i class="fas fa-folder-open"></i> Мои проекты
+    </div>
+
+    <div class="grid" id="portfolioGrid">
+        <!-- Карточки генерируются JS -->
+    </div>
+
+    <footer>
+        <p>© 2026 Иван Петров · Сделано с <i class="fas fa-heart" style="color:#ef4444;"></i> и инженерной точностью</p>
+    </footer>
+
+</div>
+
+<script>
+    // --------------------------------------------------------------
+    //  ДАННЫЕ ПРОЕКТОВ
+    // --------------------------------------------------------------
+    const works = [
+        {
+            title: "Холодоцентр. Реконструкция комплекса зданий (объект 1124)",
+            description: "Рабочая документация по холодоснабжению административного комплекса с подземным гаражом. Разработка: чиллеры с фрикулингом, насосные группы, трубопроводы, автоматика.",
+            category: "Инженерные системы",
+            file: "files/(3.2) 11_2023_РД_ ХЦ (29.06.26) (1).pdf",
+            isEngineering: true,
+            details: [
+                "📍 Москва, ул. Заморёнова 24",
+                "📐 5 чиллеров (4 раб + 1 рез), 1103 кВт каждый",
+                "❄️ Холодоноситель: 50% пропиленгликоль",
+                "📄 15 листов + спецификация"
+            ]
+        },
+        {
+            title: "Бренд-бук «Aura»",
+            description: "Разработка полного фирменного стиля для бренда здорового питания.",
+            category: "Дизайн",
+            file: "files/aura_brandbook.pdf"
+        },
+        {
+            title: "Мобильное приложение «Trackly»",
+            description: "UI/UX концепция для трекера привычек с акцентом на минимализм.",
+            category: "UX/UI",
+            file: "files/trackly_app.pdf"
+        },
+        {
+            title: "Презентация «Техностарт»",
+            description: "Инвестиционная презентация для стартапа в сфере EdTech.",
+            category: "Презентации",
+            file: "files/technostart_pitch.pdf"
+        }
+    ];
+
+    // --------------------------------------------------------------
+    //  РЕНДЕР
+    // --------------------------------------------------------------
+    function renderWorks() {
+        const grid = document.getElementById('portfolioGrid');
+        if (!grid) return;
+
+        let html = '';
+        works.forEach((work) => {
+            let iconHtml = '<i class="fas fa-file-pdf" style="color:#dc2626;"></i>';
+
+            if (work.isEngineering) {
+                iconHtml = '<i class="fas fa-snowflake" style="color:#2563eb;"></i>';
+            } else if (work.category.toLowerCase().includes('дизайн')) {
+                iconHtml = '<i class="fas fa-palette" style="color:#7c3aed;"></i>';
+            } else if (work.category.toLowerCase().includes('ui') || work.category.toLowerCase().includes('веб')) {
+                iconHtml = '<i class="fas fa-laptop-code" style="color:#2563eb;"></i>';
+            } else if (work.category.toLowerCase().includes('презент')) {
+                iconHtml = '<i class="fas fa-file-powerpoint" style="color:#e67e22;"></i>';
+            }
+
+            let detailsHtml = '';
+            if (work.details) {
+                detailsHtml = work.details.map(d => `
+                    <div class="project-detail"><i class="fas fa-circle" style="font-size: 0.4rem;"></i> ${d}</div>
+                `).join('');
+            }
+
+            const cardClass = work.isEngineering ? 'card card-engineering' : 'card';
+
+            html += `
+                <div class="${cardClass}">
+                    <div>
+                        <div class="card-icon">${iconHtml}</div>
+                        <h3>${work.title}</h3>
+                        <div class="desc">${work.description}</div>
+                        ${detailsHtml}
+                        <div class="meta">
+                            <i class="fas fa-tag"></i> ${work.category}
+                            ${work.isEngineering ? '<span class="badge"><i class="fas fa-cog"></i> Рабочая документация</span>' : ''}
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <a href="${work.file}" target="_blank" class="btn btn-primary">
+                            <i class="fas fa-eye"></i> Смотреть
+                        </a>
+                        <a href="${work.file}" download class="btn btn-outline">
+                            <i class="fas fa-download"></i> Скачать
+                        </a>
+                    </div>
+                </div>
+            `;
+        });
+
+        grid.innerHTML = html;
+    }
+
+    renderWorks();
+</script>
+
+</body>
+</html>
